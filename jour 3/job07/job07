@@ -1,0 +1,12 @@
+<?php
+$largeur = 20;  // largeur du rectangle
+$hauteur = 10;  // hauteur du rectangle
+
+for ($ligne = 1; $ligne <= $hauteur; $ligne++) {
+    for ($colonne = 1; $colonne <= $largeur; $colonne++) {
+        echo "*";
+    }
+    echo "<br />";
+}
+?>
+ 

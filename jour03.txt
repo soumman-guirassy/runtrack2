@@ -1,0 +1,10 @@
+<?php
+// Définir la chaîne
+$str = "Dans l'espace, personne ne vous entend crier";
+
+// Compter le nombre de caractères
+$nb_caracteres = strlen($str);
+
+// Afficher le résultat
+echo "La chaîne contient $nb_caracteres caractères.";
+?>

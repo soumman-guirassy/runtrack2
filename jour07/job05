@@ -1,0 +1,16 @@
+<?php
+// Déclaration de la fonction occurrences
+// $str : une chaîne de caractères
+// $char : un caractère dont on veut compter les occurrences dans $str
+function occurrences($str, $char) {
+    // Utilisation de la fonction native substr_count pour compter les occurrences
+    return substr_count($str, $char);
+}
+
+// Exemple d'utilisation
+$texte = "Bonjour";
+$caractere = "o";
+
+// Appel de la fonction et affichage du résultat
+echo "Le nombre d'occurrences de '$caractere' dans '$texte' est : " . occurrences($texte, $caractere);
+?>

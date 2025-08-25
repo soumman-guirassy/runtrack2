@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test GET</title>
+</head>
+<body>
+
+    <h2>Formulaire de test (GET)</h2>
+
+    <form method="get" action="">
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom"><br><br>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" id="prenom"><br><br>
+
+        <label for="email">Email :</label>
+        <input type="text" name="email" id="email"><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <?php
+        if (!empty($_GET)) {
+            $nombre_arguments = count($_GET);
+            echo "<p>Le nombre d’argument(s) GET envoyé(s) est : <strong>$nombre_arguments</strong></p>";
+
+            echo "<ul>";
+            foreach ($_GET as $cle => $valeur) {
+                echo "<li><strong>$cle</strong> : $valeur</li>";
+            }
+            echo "</ul>";
+        }
+    ?>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nombre d'arguments POST</title>
+</head>
+<body>
+
+    <h2>Formulaire de test (méthode POST)</h2>
+
+    <!-- ✅ Formulaire HTML en POST -->
+    <form method="post" action="">
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" id="prenom"><br><br>
+
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom"><br><br>
+
+        <label for="email">Email :</label>
+        <input type="text" name="email" id="email"><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <?php
+    // ✅ Si le formulaire est soumis avec des données POST
+    if (!empty($_POST)) {
+        $nb_arguments = count($_POST);
+        echo "<p>Le nombre d’argument(s) POST envoyé(s) est : <strong>$nb_arguments</strong></p>";
+    }
+    ?>
+
+</body>
+</html>

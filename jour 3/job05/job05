@@ -1,0 +1,27 @@
+<?php
+$str = "On n’est pas le meilleur quand on le croit mais quand on le sait";
+
+$dic = [
+    "voyelles" => 0,
+    "consonnes" => 0
+];
+
+$voyelles = ['a','e','i','o','u','y','à','â','ä','é','è','ê','ë','î','ï','ô','ö','ù','û','ü'];
+
+
+$strLower = mb_strtolower($str); // mise en minuscule
+for ($i = 0; $i < mb_strlen($strLower); $i++) {
+    $car = mb_substr($strLower, $i, 1); // caractère actuel
+    if (ctype_alpha($car)) { // uniquement les lettres
+        if (in_array($car, $voyelles)) {
+            $dic["voyelles"]++;
+        } else {
+            $dic["consonnes"]++;
+        }
+    }
+}
+echo "<table border='1' cellpadding='5' cellspacing='0'>";
+echo "<thead><tr><th>Voyelles</th><th>Consonnes</th></tr></thead>";
+echo "<tbody><tr><td>{$dic['voyelles']}</td><td>{$dic['consonnes']}</td></tr></tbody>";
+echo "</table>";
+?>

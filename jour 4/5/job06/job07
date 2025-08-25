@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Maison ASCII</title>
+    <style>
+        pre {
+            font-family: monospace;
+            line-height: 1.1em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Construction d'une maison ASCII</h2>
+
+<form method="post" action="">
+    <label for="largeur">Largeur (minimum 2) :</label>
+    <input type="number" name="largeur" id="largeur" min="2" required><br><br>
+
+    <label for="hauteur">Hauteur (minimum 1) :</label>
+    <input type="number" name="hauteur" id="hauteur" min="1" required><br><br>
+
+    <input type="submit" value="Construire la maison">
+</form>
+
+<?php
+function dessiner_maison(int $largeur, int $hauteur): string {
+    $output = "";
+
+    // Largeur minimum 2 pour éviter problèmes
+    if ($largeur < 2) $largeur = 2;
+    if ($hauteur < 1) $hauteur = 1;
+
+    // Toit : on va dessiner un triangle isocèle centré
+    // Hauteur du toit = hauteur / 2 arrondi vers le haut (ou largeur/2)
+    $hauteur_toit = (int) ceil($largeur / 2);
+
+    // Largeur totale du corps = largeur
+    // Largeur totale du toit = largeur + 2 (pour inclure les '/' et '\')
+
+    // Dessiner le toit ligne par ligne
+    for ($i = 0; $i < $hauteur_toit; $i++) {
+        // espaces avant /
+        $espaces_avant = $hauteur_toit - $i - 1;
+        $output .= str_repeat(' ', $espaces_avant);
+
+        $output .= '/';
+
+        // espaces entre / et \
+        $espaces_centre = $i * 2;
+        $output .= str_repeat(' ', $espaces_centre);
+
+        $output .= '\\';
+
+        $output .= "\n";
+    }
+
+    // Corps de la maison (rectangle)
+    // Largeur du corps = largeur
+    // On dessine hauteur lignes
+
+    for ($j = 0; $j < $hauteur; $j++) {
+        $output .= '|';
+        $output .= str_repeat(' ', $largeur - 2);
+        $output .= "|";
+        $output .= "\n";
+    }
+
+    return $output;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $largeur = isset($_POST['largeur']) ? intval($_POST['largeur']) : 0;
+    $hauteur = isset($_POST['hauteur']) ? intval($_POST['hauteur']) : 0;
+
+    if ($largeur < 2 || $hauteur < 1) {
+        echo "<p style='color:red;'>Veuillez entrer une largeur >= 2 et une hauteur >= 1.</p>";
+    } else {
+        echo "<pre>" . dessiner_maison($largeur, $hauteur) . "</pre>";
+    }
+}
+?>
+
+</body>
+</html>

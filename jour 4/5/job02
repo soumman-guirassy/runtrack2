@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Affichage des arguments GET</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Formulaire de test (méthode GET)</h2>
+
+    <!-- ✅ Formulaire HTML en GET -->
+    <form method="get" action="">
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" id="prenom"><br><br>
+
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom"><br><br>
+
+        <label for="ville">Ville :</label>
+        <input type="text" name="ville" id="ville"><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <?php
+    // ✅ Si des données GET sont présentes, on les affiche dans un tableau
+    if (!empty($_GET)) {
+        echo "<h3>Arguments reçus :</h3>";
+        echo "<table>";
+        echo "<tr><th>Argument</th><th>Valeur</th></tr>";
+
+        foreach ($_GET as $cle => $valeur) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($cle) . "</td>";
+            echo "<td>" . htmlspecialchars($valeur) . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    }
+    ?>
+
+</body>
+</html>

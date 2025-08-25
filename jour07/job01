@@ -1,0 +1,8 @@
+def hello():
+    # définit la fonction nommée hello
+ print("Hello LaPlateforme!")
+# affiche le texte dmd
+
+hello()
+#  L'appel hello() exécute la fonction.
+      
